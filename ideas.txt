@@ -1,0 +1,26 @@
+Need List
+- User sees cities
+- User adds reviews
+- User can rate cities
+- Sign-up/Login
+- View reviews
+
+
+Wish List
+- Filter by state
+- Weather
+- Google Map API
+- Excercise
+- Food Review
+- City Icon/Photos
+- Cost
+- Public transit
+- Order/Filter
+- Events API
+- News Stories
+- Similar cities
+
+
+User Stories
+- User can view all cities
+- User can add a review
