@@ -9,18 +9,20 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    @state_collection = Location::STATES
   end
 
   def create
     @location = Location.new(location_params)
 
-  if @location.save
-    flash[:notice] = "City added successfully"
-    redirect_to location_path(@location)
-  else
-    flash[:error] = @location.errors.full_messages.join(". ")
-    render :new
-  end
+    if @location.save
+      flash[:notice] = "City added successfully"
+      redirect_to location_path(@location)
+    else
+      @state_collection = Location::STATES
+      flash[:error] = @location.errors.full_messages.join(". ")
+      render :new
+    end
   end
 
   def location_params
