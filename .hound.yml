@@ -276,3 +276,5 @@ Style/UnneededPercentQ:
 
 Metrics/AbcSize:
   Enabled: false
+
+ignore_file: config/initializers/devise.rb
