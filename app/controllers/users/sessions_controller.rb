@@ -3,9 +3,8 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create
-    
-  end
 
+  end
 
   def destroy
 

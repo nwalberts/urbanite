@@ -8,15 +8,16 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'launchy'
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :test do
   gem 'coveralls', require: false
-  gem 'database_cleaner'
-  gem 'factory_girl'
 end
