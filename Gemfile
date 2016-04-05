@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
+gem 'launchy'
 
 group :development, :test do
   gem 'capybara'
@@ -14,10 +15,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-group :development do
-  gem 'web-console', '~> 2.0'
-end
-
 group :test do
   gem 'coveralls', require: false
+  gem 'database_cleaner'
+  gem 'factory_girl'
 end
