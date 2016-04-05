@@ -17,16 +17,4 @@ feature "visitor sees a list of cities" do
     expect(page).to have_content "New City Form"
 
   end
-
-  # scenario "clicks link and is taken to show page for given city" do
-  #   boston = Location.create(name: 'Boston', state: "MA", description: 'Best city in the world')
-  #
-  #   visit root_path
-  #
-  #   click_link "Boston"
-  #
-  #   expect(page).to have_content boston.name
-  #   expect(page).to have_content boston.state
-  #   expect(page).to have_content boston.description
-  # end
 end
