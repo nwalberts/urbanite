@@ -15,17 +15,6 @@ RSpec.configure do |config|
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
 
-=begin
-  config.disable_monkey_patching!
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
-
-  config.profile_examples = 10
-  config.order = :random
-  Kernel.srand config.seed
-=end
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
