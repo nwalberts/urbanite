@@ -1,8 +1,8 @@
 <h1>Cities</h1>
   <ul>
-    <% @locations.each do |city| %>
+    <% @locations.each do |location| %>
       <li>
-        <%= city.name %>
+        <%= link_to location.name, location_path(location) %>
       </li>
     <% end %>
   </ul>
