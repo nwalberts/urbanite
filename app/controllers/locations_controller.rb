@@ -1,6 +1,9 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all.order(:name)
+    if user_signed_in?
+      @profile = current_user.profile
+    end
   end
 
   def show

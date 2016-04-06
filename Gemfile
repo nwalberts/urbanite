@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'launchy'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'carrierwave'
 
 group :development, :test do
   gem 'capybara'

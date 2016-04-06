@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405150816) do
+ActiveRecord::Schema.define(version: 20160406182458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20160405150816) do
   end
 
   add_index "locations", ["name"], name: "index_locations_on_name", unique: true, using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "bio"
+    t.string   "avatar_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                          null: false
