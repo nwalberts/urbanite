@@ -16,10 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def after_inactive_sign_up_path_for(*)
-    '/users/sign_in'
-  end
-
   def user_params
     params.require(:user).permit(
       :first_name,

@@ -1,6 +1,8 @@
 require "rails_helper"
 
 feature "visitors can add cities" do
+  # As a user
+  # I want to 
   scenario "visitor adds new city successfully" do
 
     visit new_city_path

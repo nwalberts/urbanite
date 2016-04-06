@@ -3,7 +3,7 @@ FactoryGirl.define do
     first_name "Charlize"
     last_name "Theron"
     home_location "The Green Place"
-    email "imperatorfuriosa@madmax.com"
+    sequence(:email) { |n| "imperatorfuriosa#{n}@madmax.com" }
     password "password"
   end
 end
