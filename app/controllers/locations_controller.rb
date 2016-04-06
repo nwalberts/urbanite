@@ -25,6 +25,30 @@ class LocationsController < ApplicationController
     end
   end
 
+  def edit
+    @state_collection = Location::STATES
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+
+    if @location.update(location_params)
+      flash[:notice] = "Successfully updated city!"
+      redirect_to location_path(@location)
+    else
+      flash[:alert] = "You are not allowed to edit this city!"
+      render :edit
+    end
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+    flash[:notice] = "Successfully deleted city!"
+    redirect_to locations_path
+  end
+
   private
 
   def location_params
