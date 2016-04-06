@@ -1,20 +1,11 @@
 require 'rails_helper'
 
 feature "User edits and deletes profile" do
-  # Acceptance Criteria
-  # [X] user updates password
-  # [X] user updates home location
-  # [X] user deletes account
-
   let(:imperator) do
     FactoryGirl.create(:user)
   end
 
   scenario "user updates password on profile" do
-    # As an authenticated user
-    # I want to update my password
-    # So that I can keep my profile up to date
-
     visit 'users/sign_in'
     fill_in "Email", with: imperator.email
     fill_in "Password", with: imperator.password
@@ -32,10 +23,6 @@ feature "User edits and deletes profile" do
   end
 
   scenario "user updates home location on profile" do
-    # As an authenticated user
-    # I want to update my home location
-    # So that I can keep my profile up to date
-
     visit 'users/sign_in'
     fill_in "Email", with: imperator.email
     fill_in "Password", with: imperator.password
@@ -52,10 +39,6 @@ feature "User edits and deletes profile" do
   end
 
   scenario "user deletes account" do
-    # As an authenticated user
-    # I want to delete my account
-    # So that my information is no longer retained by the app
-
     visit 'users/sign_in'
     fill_in "Email", with: imperator.email
     fill_in "Password", with: imperator.password
