@@ -1,7 +1,6 @@
-require 'spec_helper'
 require 'rails_helper'
 
-feature "User signs in" do
+feature "User authentication" do
   furiosa = FactoryGirl.create(:user)
 
   let(:imperator) do
@@ -9,6 +8,7 @@ feature "User signs in" do
   end
 
   scenario "successful sign up" do
+
     visit '/users/sign_up'
     fill_in "First name", with: furiosa.first_name
     fill_in "Last name", with: furiosa.last_name
@@ -22,6 +22,19 @@ feature "User signs in" do
     expect(page).to have_content "Successfully created an account!"
   end
 
+  scenario "unsuccessful sign up" do
+    visit '/users/sign_up'
+    fill_in "First name", with: furiosa.first_name
+    fill_in "Last name", with: furiosa.last_name
+    fill_in "Home location", with: furiosa.home_location
+    fill_in "Password", with: furiosa.password
+    fill_in "Password confirmation", with: furiosa.password
+
+    click_button "Sign up"
+
+    expect(page).to have_content("Email can't be blank")
+  end
+
   scenario "successful sign in" do
     visit 'users/sign_in'
     fill_in "Email", with: imperator.email
@@ -29,6 +42,14 @@ feature "User signs in" do
     click_button "Log in"
 
     expect(page).to have_content "Signed in successfully."
+  end
+
+  scenario "unsuccessfully sign-in with incorrect data" do
+    visit 'users/sign_in'
+    fill_in "Email", with: imperator.email
+    click_button "Log in"
+
+    expect(page).to have_content "Invalid email or password."
   end
 
   scenario "successful sign out" do
