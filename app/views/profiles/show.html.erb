@@ -1,4 +1,16 @@
 <%= @profile.user.first_name %> <%= @profile.user.last_name %>'s Profile
 <br />
 Email: <%= @profile.user.email %><br />
-Home location: <%= @profile.user.home_location %>
+Home location: <%= @profile.user.home_location %><br />
+
+<% if @profile.bio %>
+Bio: <%= @profile.bio %>
+<% else %>
+<%= link_to "Add a bio", edit_profile_path(@profile) %>
+<% end %><br />
+
+<% if @profile.avatar_url %>
+<%= @profile.avatar_url %>
+<% else %>
+<%= link_to "Add an avatar", edit_profile_path(@profile) %>
+<% end %>
