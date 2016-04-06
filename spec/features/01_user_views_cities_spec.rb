@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 feature "visitor sees a list of cities" do
   scenario "sees a list of cities and link for new city" do
     boston = FactoryGirl.create(:location)
