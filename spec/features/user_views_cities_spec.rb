@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 feature "visitor sees a list of cities" do
   scenario "sees a list of cities and link for new city" do
     boston = FactoryGirl.create(:location)
@@ -8,9 +7,7 @@ feature "visitor sees a list of cities" do
     visit locations_path
 
     expect(page).to have_content boston.name
-    expect(page).to have_content boston.state
     expect(page).to have_content newyork.name
-    expect(page).to have_content newyork.state
 
     click_link "Add New City"
 

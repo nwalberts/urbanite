@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :locations, only: [:index, :new, :create, :show]
+
   root "locations#index"
 
   devise_for :users, controllers: { registrations: "users/registrations" }
-
-  resources :locations, only: [:index, :new, :create]
 
   devise_scope :user do
     get "users/sign_out" => "devise/sessions#destroy"
