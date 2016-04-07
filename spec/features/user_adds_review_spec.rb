@@ -3,8 +3,14 @@ require 'rails_helper'
 feature "user adds new review to location" do
   FactoryGirl.create(:location)
   boston_review = FactoryGirl.create(:review)
+  imperator = FactoryGirl.create(:user)
 
   scenario "user adds rating only" do
+    visit 'users/sign_in'
+    fill_in "Email", with: imperator.email
+    fill_in "Password", with: imperator.password
+    click_button "Log in"
+
     visit "/locations"
     click_link "Boston"
 
@@ -18,6 +24,11 @@ feature "user adds new review to location" do
   end
 
   scenario "user adds rating and review body" do
+    visit 'users/sign_in'
+    fill_in "Email", with: imperator.email
+    fill_in "Password", with: imperator.password
+    click_button "Log in"
+
     visit "/locations"
     click_link "Boston"
 
@@ -32,6 +43,11 @@ feature "user adds new review to location" do
   end
 
   scenario "user is unable to add review without rating" do
+    visit 'users/sign_in'
+    fill_in "Email", with: imperator.email
+    fill_in "Password", with: imperator.password
+    click_button "Log in"
+
     visit "/locations"
     click_link "Boston"
 

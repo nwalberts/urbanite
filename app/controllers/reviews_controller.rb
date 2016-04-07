@@ -7,9 +7,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @review = Review.new(review_params)
     @user = current_user
     @location = Location.find(params[:location_id])
-    @review = Review.new(review_params)
+
 
     @rating_collection = [1, 2, 3, 4, 5]
 
