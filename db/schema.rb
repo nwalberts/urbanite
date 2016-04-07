@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20160407143853) do
 
   add_index "locations", ["name"], name: "index_locations_on_name", unique: true, using: :btree
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "avatar"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "location_id", null: false
