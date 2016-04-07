@@ -1,4 +1,6 @@
 class Location < ActiveRecord::Base
+  has_many :reviews
+
   STATES =
     [
       "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID",
