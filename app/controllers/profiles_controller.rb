@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   # before_action :authenticate_individual!
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -27,14 +26,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def edit
-
+  def editss
   end
-
-  # def update
-  #   @profile.update(profile_params)
-  #   respond_with(@profile)
-  # end
 
   def update
     respond_to do |format|
@@ -47,7 +40,6 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
 
   private
 
