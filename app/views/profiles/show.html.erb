@@ -3,14 +3,18 @@
 Email: <%= @profile.user.email %><br />
 Home location: <%= @profile.user.home_location %><br />
 
+<%= link_to "Edit Account Info", edit_user_registration_path %>
+
 <% if @profile.bio %>
 Bio: <%= @profile.bio %>
+<%= link_to "Edit bio", edit_profile_path(@profile) %>
 <% else %>
 <%= link_to "Add a bio", edit_profile_path(@profile) %>
 <% end %><br />
 
 <% if @profile.avatar_url %>
 <%= @profile.avatar_url %>
+<%= link_to "Change profile picture", edit_profile_path(@profile) %>
 <% else %>
 <%= link_to "Add an avatar", edit_profile_path(@profile) %>
 <% end %>
