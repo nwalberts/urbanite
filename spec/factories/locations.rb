@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :location do
-    sequence(:name) { |n| "Boston #{n}" }
+    name "Boston"
     state "MA"
     description "Best city in the world."
   end

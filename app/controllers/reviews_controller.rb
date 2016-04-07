@@ -10,15 +10,13 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @user = current_user
     @location = Location.find(params[:location_id])
-
-
     @rating_collection = [1, 2, 3, 4, 5]
 
     if @review.save
       flash[:notice] = "Review added successfully!"
       redirect_to location_path(@location)
     else
-      flash[:error] = @review.errors.full_messages.join(", ")
+      flash[:error] = "Review must have rating."
       render :new
     end
   end

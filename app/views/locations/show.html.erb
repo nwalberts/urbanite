@@ -9,6 +9,10 @@
 
 <% end %>
 
-<%= link_to 'Add a Review', new_location_review_path(@location) %>
+<% if current_user %>
+  <%= link_to 'Add a Review', new_location_review_path(@location) %>
+<% else %>
+  Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
+<% end %>
 <%= link_to 'Edit', edit_location_path(@location) %>
 <%= link_to 'Back', locations_path %>
