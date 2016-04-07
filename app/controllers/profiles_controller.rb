@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def editss
+  def edits
   end
 
   def update
