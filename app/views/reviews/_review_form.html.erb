@@ -1,0 +1,13 @@
+<%= form_for [@location, @review] do |f| %>
+  <div class="row">
+    <% @rating_collection.each do |rating| %>
+      <%=f.radio_button(:rating, "#{rating}") %>
+      <%= label_tag(:"#{rating}", "#{rating}") %>
+    <% end %>
+  </div>
+
+  <%=f.label :body %>
+  <%=f.text_area :body %>
+
+  <%= f.submit "Submit" %>
+<% end %>
