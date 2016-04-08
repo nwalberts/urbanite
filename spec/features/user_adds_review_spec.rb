@@ -2,8 +2,8 @@ require 'rails_helper'
 require 'pry'
 
 feature "user adds new review to location" do
-  let!(:location) { FactoryGirl.create(:location) }
-  let!(:imperator) { FactoryGirl.create(:user) }
+  let!(:review) { FactoryGirl.create(:review) }
+
 
   scenario "user adds rating only" do
     visit 'users/sign_in'
