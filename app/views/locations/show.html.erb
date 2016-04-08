@@ -15,4 +15,7 @@
   Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
 <% end %>
 <%= link_to 'Edit', edit_location_path(@location) %>
+<% if current_user.admin?  %>
+  <%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %>
+<% end %>
 <%= link_to 'Back', locations_path %>

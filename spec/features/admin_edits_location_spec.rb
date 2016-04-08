@@ -1,9 +1,15 @@
 require 'rails_helper'
 
 feature "User edits location data" do
+  let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
 
   scenario "user sees edit page" do
     boston = FactoryGirl.create(:location)
+
+    visit 'users/sign_in'
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: admin.password
+    click_button "Log in"
 
     visit "/locations"
 
