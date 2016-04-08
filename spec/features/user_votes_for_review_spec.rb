@@ -47,9 +47,13 @@ feature "user votes on a review" do
     expect(page).to have_content("Votes: 1")
 
     click_button "Downvote"
-    expect(page).to have_content("Votes:-1")
+    expect(page).to have_content("Votes: -1")
   end
 
   scenario "user doesn't vote on a review" do
+    visit root_path
+    click_link review.location.name
+
+    expect(page).to have_content("Votes: 0")
   end
 end
