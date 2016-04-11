@@ -15,17 +15,19 @@ feature "visitor sees a list of cities" do
   end
 
   scenario "index is paginated to have ten cities per page" do
-    11.times do
+    9.times do
       FactoryGirl.create(:location)
     end
+    newyork = FactoryGirl.create(:location, name: "New York", state: "NY")
+    anchorage = FactoryGirl.create(:location, name: "Anchorage", state: "AK")
 
     visit locations_path
 
-    expect(page).to have_content "Boston 12"
-    expect(page).to_not have_content "Boston 9"
+    expect(page).to have_content anchorage.name
+    expect(page).to_not have_content newyork.name
 
     visit '/locations?page=2'
 
-    expect(page).to have_content "Boston 9"
+    expect(page).to have_content newyork.name
   end
 end
