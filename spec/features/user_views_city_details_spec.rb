@@ -30,7 +30,6 @@ feature "visitor sees show page for a city" do
     fill_in "Password", with: admin.password
     click_button "Log in"
 
-
     visit locations_path
     click_link "Boston"
 
