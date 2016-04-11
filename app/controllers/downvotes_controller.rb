@@ -7,11 +7,10 @@ class DownvotesController < ApplicationController
 
     if @vote.save
       flash[:notice] = "Downvoted!"
-      redirect_to location_path(@review.location)
     else
       flash[:error] = "Vote not saved."
-      redirect_to location_path(@review.location)
     end
+    redirect_to location_path(@review.location)
   end
 
   def update

@@ -9,12 +9,12 @@ class Review < ActiveRecord::Base
 
   def user_vote(user)
     vote = votes.find_by(user: user)
-    return vote.id
+    vote.id
   end
 
   def vote_value(user)
     vote = votes.find_by(user_id: user)
-    return vote.value
+    vote.value
   end
 
   paginates_per 10

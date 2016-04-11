@@ -1,13 +1,4 @@
 class UpvotesController < ApplicationController
-  # def new
-  #   @review = Review.find(params[:review_id])
-  #   @user = current_user
-    # @vote = Vote.new
-  #   @vote.user = @user
-  #   @vote.review = @review
-  #   @vote.default_vote
-  # end
-
   def create
     @review = Review.find(params[:review_id])
     @user = current_user
@@ -16,11 +7,10 @@ class UpvotesController < ApplicationController
 
     if @vote.save
       flash[:notice] = "Vote added successfully!"
-      redirect_to location_path(@review.location)
     else
       flash[:error] = "Vote not saved."
-      redirect_to location_path(@review.location)
     end
+    redirect_to location_path(@review.location)
   end
 
   def update
@@ -31,10 +21,4 @@ class UpvotesController < ApplicationController
     flash[:notice] = "Changed"
     redirect_to location_path(@review.location)
   end
-  #
-  # private
-  #
-  # def vote_params
-  #   params.require(:vote).permit(:value).merge(user: current_user, review: Review.find(params[:review_id]) )
-  # end
 end
