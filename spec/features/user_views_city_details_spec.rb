@@ -1,27 +1,33 @@
 require 'rails_helper'
 
 feature "visitor sees show page for a city" do
-  let(:imperator) do
-    FactoryGirl.create(:user)
-  end
+  let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
+  FactoryGirl.create(:location)
 
   scenario "clicks link and is taken to show page for given city" do
-    boston = FactoryGirl.create(:location)
+    visit 'users/sign_in'
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: admin.password
+    click_button "Log in"
+
+    review = FactoryGirl.create(:review)
     visit locations_path
 
     click_link "Boston"
 
-    expect(page).to have_content boston.name
-    expect(page).to have_content boston.state
-    expect(page).to have_content boston.description
+    expect(page).to have_content review.location.name
+    expect(page).to have_content review.location.state
+    expect(page).to have_content review.location.description
+    expect(page).to have_content review.body
+    expect(page).to have_content review.rating
   end
 
   scenario "user sees 10 reviews per page" do
     boston = FactoryGirl.create(:location)
 
     visit 'users/sign_in'
-    fill_in "Email", with: imperator.email
-    fill_in "Password", with: imperator.password
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: admin.password
     click_button "Log in"
 
 

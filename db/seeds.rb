@@ -27,3 +27,6 @@ Location.create(name: "Bozeman", state: "MT", description: "The Bozone")
 Location.create(name: "Franklin", state: "NJ", description: "Fluorescent Mineral Capital of the World")
 Location.create(name: "Portland", state: "ME", description: "Forest City")
 Location.create(name: "Sarasota", state: "FL", description: "Heaven's Waiting Room")
+
+User.create(first_name: "Greg", last_name: "Something", home_location: "Boston", email: "something@nothing.com", password: "password123")
+User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin")
