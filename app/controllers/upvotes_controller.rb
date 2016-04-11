@@ -1,4 +1,4 @@
-class VotesController < ApplicationController
+class UpvotesController < ApplicationController
   # def new
   #   @review = Review.find(params[:review_id])
   #   @user = current_user

@@ -3,10 +3,7 @@ class Vote < ActiveRecord::Base
   belongs_to :review
 
   validates :user_id, uniqueness: { scope: :review_id }
-
-  # def self.create_upvote(user, review)
-  # end
-
+  
   def self.tally
     count = 0
     tally = Vote.all.each do |vote|

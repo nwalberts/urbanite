@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:show] do
-    resources :votes, only: [:create, :update]
+    resources :upvotes, only: [:create, :update]
+    resources :downvotes, only: [:create, :update, :destroy]
   end
 
   devise_for :users, controllers: { registrations: "users/registrations" }
