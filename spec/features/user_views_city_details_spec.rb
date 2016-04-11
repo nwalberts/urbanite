@@ -5,7 +5,7 @@ feature "visitor sees show page for a city" do
 
   scenario "clicks link and is taken to show page for given city" do
     boston = FactoryGirl.create(:location)
-    
+
     visit 'users/sign_in'
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password

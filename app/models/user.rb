@@ -7,12 +7,6 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
-  def creator?
-    role == "creator"
-  end
-  
-
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
