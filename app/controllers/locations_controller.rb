@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all.order(:name)
+    @locations = Location.all.order(:name).page params[:page]
     if user_signed_in?
       @profile = current_user.profile
     end
@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @reviews = @location.reviews
+    @reviews = @location.reviews.order(created_at: :desc).page params[:page]
   end
 
   def new
