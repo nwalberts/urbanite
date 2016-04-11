@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :show]
   end
 
+  resources :reviews, only: [:destroy, :edit, :update]
+
   devise_for :users
 
   devise_scope :user do

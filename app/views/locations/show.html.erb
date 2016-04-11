@@ -4,7 +4,14 @@
 <br>
 <% @reviews.each do |review| %>
   <p><%= review.rating %>/5 --
-  <%= review.body %></p>
+  <%= review.body %>
+  <% if current_user == review.user %>
+  <%= link_to 'Edit', edit_review_path(review) %>
+  <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
+  <% elsif current_user.admin? %>
+  <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
+  <% end %>
+</p>
   <br />
 
 <% end %>
