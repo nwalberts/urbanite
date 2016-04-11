@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :show]
   end
 
+  resources :reviews, only: [:show] do
+    resources :votes, only: [:create, :update]
+  end
+
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   devise_scope :user do

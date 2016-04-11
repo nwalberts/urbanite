@@ -1,0 +1,15 @@
+<% @reviews.each do |review| %>
+  <p><%= review.rating %>/5 --
+  <%= review.body %>
+  Votes: <%= review.votes.tally %>
+  </p>
+      <%= link_to "Upvote", review_votes_path(review), method: :post%>
+      <%= link_to "Downvote", review_votes_path(review), method: :post%>
+
+<% end %>
+<br>
+<% if current_user %>
+  <%= link_to 'Add a Review', new_location_review_path(@location) %>
+<% else %>
+   Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
+<% end %>

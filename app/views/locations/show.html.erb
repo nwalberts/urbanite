@@ -2,18 +2,7 @@
 <h2> State: <%= @location.state %> </h2>
 <p> Description: <%= @location.description %> </p>
 <br>
-<% @reviews.each do |review| %>
-  <p><%= review.rating %>/5 --
-  <%= review.body %></p>
-  <%= review.vote.tally %>
-  <br />
+<%= render './reviews/index' %>
 
-<% end %>
-
-<% if current_user %>
-  <%= link_to 'Add a Review', new_location_review_path(@location) %>
-<% else %>
-  Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
-<% end %>
 <%= link_to 'Edit', edit_location_path(@location) %>
 <%= link_to 'Back', locations_path %>
