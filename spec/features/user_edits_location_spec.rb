@@ -5,7 +5,6 @@ feature "creator edits location data and user cannot edit" do
   let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
 
   scenario "creator of location edits location" do
-    boston = FactoryGirl.create(:location)
 
     visit 'users/sign_in'
     fill_in "Email", with: user.email
