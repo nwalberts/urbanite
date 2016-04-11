@@ -7,6 +7,8 @@
     <% end %>
   </ul>
 
+  <%= paginate @locations %>
+
 <%= link_to "Add New City", new_location_path %>
 <br />
 <%= link_to "Log Out", destroy_user_session_path %>
