@@ -2,17 +2,16 @@ require 'rails_helper'
 require 'pry'
 
 feature "user adds new review to location" do
-  let!(:location) { FactoryGirl.create(:location) }
-  let!(:imperator) { FactoryGirl.create(:user) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario "user adds rating only" do
     visit 'users/sign_in'
-    fill_in "Email", with: imperator.email
-    fill_in "Password", with: imperator.password
+    fill_in "Email", with: review.user.email
+    fill_in "Password", with: review.user.password
     click_button "Log in"
 
     visit "/locations"
-    click_link location.name
+    click_link review.location.name
 
     click_link "Add a Review"
     choose('review_rating_5')
@@ -25,13 +24,13 @@ feature "user adds new review to location" do
 
   scenario "user adds rating and review body" do
     visit 'users/sign_in'
-    fill_in "Email", with: imperator.email
-    fill_in "Password", with: imperator.password
+    fill_in "Email", with: review.user.email
+    fill_in "Password", with: review.user.password
     click_button "Log in"
 
     visit "/locations"
 
-    click_link location.name
+    click_link review.location.name
 
     click_link "Add a Review"
     choose('review_rating_5')
@@ -45,12 +44,12 @@ feature "user adds new review to location" do
 
   scenario "user is unable to add review without rating" do
     visit 'users/sign_in'
-    fill_in "Email", with: imperator.email
-    fill_in "Password", with: imperator.password
+    fill_in "Email", with: review.user.email
+    fill_in "Password", with: review.user.password
     click_button "Log in"
 
     visit "/locations"
-    click_link location.name
+    click_link review.location.name
 
     click_link "Add a Review"
     fill_in "Body", with: "Great"
