@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "admin deletes review" do
   let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
   let!(:user) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "bob@la.com", password: "password1") }
-  let!(:review) { FactoryGirl.create(:review)}
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario "admin deletes a review on show page" do
     visit 'users/sign_in'
