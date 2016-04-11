@@ -3,4 +3,6 @@
 <%= render 'form' %>
 
 <%= link_to "Nevermind", location_path(@location) %>
-<%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %>
+  <% if current_user.admin?  %>
+    <%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %>
+  <% end %>
