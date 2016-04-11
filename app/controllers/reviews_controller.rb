@@ -40,11 +40,11 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @location = Location.find_by(params[:location_id])
+    @location = Location.find(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
     if current_user == @review.user
       @review = Review.find(params[:id])
-      if @review.update(location_params)
+      if @review.update(review_params)
         flash[:notice] = "Successfully updated review!"
         redirect_to location_path(@location)
       else
