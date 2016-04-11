@@ -11,6 +11,7 @@ gem 'launchy'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
 
 group :development, :test do
   gem 'capybara'

@@ -3,7 +3,7 @@
   <%= review.body %>
   Votes: <%= review.votes.tally %>
   </p>
-  
+
   <% if review.votes.find_by(user: current_user) && vote_value = 1 %>
     <%= link_to "Upvote", review_downvote_path(review.id, review.user_vote(current_user)), method: :patch%>
   <% else %>
@@ -20,10 +20,6 @@
   <%= link_to "Cancel", review_downvote_path(review.id, review.user_vote(current_user)), method: :patch%>
   <% end %>
 
-<% end %>
-<br><br>
-<% if current_user %>
-  <%= link_to 'Add a Review', new_location_review_path(@location) %>
-<% else %>
-   Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
+  <%= paginate @reviews %>
+
 <% end %>

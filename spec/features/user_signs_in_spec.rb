@@ -19,7 +19,7 @@ feature "User authentication" do
 
     click_button "Sign up"
 
-    expect(page).to have_content "Successfully created an account!"
+    expect(page).to have_content "You have signed up successfully"
   end
 
   scenario "unsuccessful sign up" do

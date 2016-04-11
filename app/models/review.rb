@@ -15,12 +15,7 @@ class Review < ActiveRecord::Base
   def vote_value(user)
     vote = votes.find_by(user_id: user)
     return vote.value
-    # if vote.value > 0
-    #   return true
-    # elsif vote.value < 0
-    #   return false
-    # else
-    #   return nil
-    # end
   end
+
+  paginates_per 10
 end

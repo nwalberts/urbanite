@@ -1,7 +1,13 @@
 require "rails_helper"
 
 feature "visitors can add locations" do
+  let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
+
   scenario "visitor adds new location successfully" do
+    visit 'users/sign_in'
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: admin.password
+    click_button "Log in"
 
     visit new_location_path
     expect(page).to have_content "New City Form"

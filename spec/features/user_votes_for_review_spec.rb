@@ -13,7 +13,7 @@ feature "user votes on a review" do
     click_link review.location.name
 
     expect(page).to have_content("Votes: 0")
-    click_button "Upvote"
+    click_link "Upvote"
     expect(page).to have_content("Votes: 1")
   end
 
@@ -22,7 +22,7 @@ feature "user votes on a review" do
     click_link review.location.name
 
     expect(page).to have_content("Votes: 0")
-    click_button "Downvote"
+    click_link "Downvote"
     expect(page).to have_content("Votes: -1")
   end
 
@@ -31,10 +31,10 @@ feature "user votes on a review" do
     click_link review.location.name
 
     expect(page).to have_content("Votes: 0")
-    click_button "Upvote"
+    click_link "Upvote"
     expect(page).to have_content("Votes: 1")
 
-    click_button "Upvote"
+    click_link "Upvote"
     expect(page).to have_content("Votes: 0")
   end
 
@@ -43,11 +43,11 @@ feature "user votes on a review" do
     click_link review.location.name
 
     expect(page).to have_content("Votes: 0")
-    click_button "Upvote"
+    click_link "Upvote"
     expect(page).to have_content("Votes: 1")
 
-    click_button "Downvote"
-    expect(page).to have_content("Votes: -1")
+    click_link "Downvote"
+    expect(page).to have_content("Votes: 0")
   end
 
   scenario "user doesn't vote on a review" do

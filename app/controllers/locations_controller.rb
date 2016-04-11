@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all.order(:name)
+    @locations = Location.all.order(:name).page params[:page]
     if user_signed_in?
       @profile = current_user.profile
     end
@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @reviews = @location.reviews
+    @reviews = @location.reviews.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -18,6 +18,7 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
+    @user = current_user
 
     if @location.save
       flash[:notice] = "City added successfully"
@@ -36,13 +37,15 @@ class LocationsController < ApplicationController
 
   def update
     @location = Location.find(params[:id])
-
-    if @location.update(location_params)
-      flash[:notice] = "Successfully updated city!"
-      redirect_to location_path(@location)
-    else
-      flash[:alert] = "You are not allowed to edit this city!"
-      render :edit
+    if current_user == @location.user
+      @location = Location.find(params[:id])
+      if @location.update(location_params)
+        flash[:notice] = "Successfully updated city!"
+        redirect_to location_path(@location)
+      else
+        flash[:alert] = "You are not allowed to edit this city!"
+        render :edit
+      end
     end
   end
 
@@ -60,6 +63,12 @@ class LocationsController < ApplicationController
       :name,
       :state,
       :description
-    )
+    ).merge(user: current_user)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end
