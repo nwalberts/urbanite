@@ -15,4 +15,6 @@ class Location < ActiveRecord::Base
   validates :state, presence: true
   validates :state, inclusion: { in: STATES }
   validates :description, presence: true
+
+  paginates_per 10
 end
