@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'fog'
 
 group :development, :test do
   gem 'capybara'
@@ -19,8 +20,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem "valid_attribute"
-  gem "shoulda"
+  gem 'valid_attribute'
+  gem 'shoulda'
+  gem 'dotenv-rails'
 end
 
 group :test do
