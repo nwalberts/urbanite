@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
     if user_signed_in?
       @profile = current_user.profile
     end
+
     if params[:search]
       @locations = Location.search(params[:search]).order(:name)
     else

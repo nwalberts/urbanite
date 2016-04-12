@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :locations
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :reviews
 
   def admin?
@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates :home_location, presence: true
 
   before_create :build_default_profile
+
+  paginates_per 10
 
   private
 
