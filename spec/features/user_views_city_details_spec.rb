@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 feature "visitor sees show page for a city" do
-  let!(:admin) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "greg@la.com", password: "password1", role: "admin") }
-  FactoryGirl.create(:location)
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:location) { FactoryGirl.create(:location) }
 
   scenario "clicks link and is taken to show page for given city" do
     visit 'users/sign_in'
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
     click_button "Log in"
 
-    review = FactoryGirl.create(:review)
+    review = Review.create(rating: '4', location: location, user: user)
     visit locations_path
 
     click_link "Boston"
@@ -23,15 +23,13 @@ feature "visitor sees show page for a city" do
   end
 
   scenario "user sees 10 reviews per page" do
-    boston = FactoryGirl.create(:location)
-
     visit 'users/sign_in'
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
     click_button "Log in"
 
     visit locations_path
-    click_link "Boston"
+    click_link location.name
 
     click_link "Add a Review"
     choose('review_rating_4')
@@ -49,8 +47,8 @@ feature "visitor sees show page for a city" do
     fill_in "Body", with: "Garbage"
     click_button "Submit"
 
-    expect(page).to have_content boston.name
-    expect(page).to have_content boston.description
+    expect(page).to have_content location.name
+    expect(page).to have_content location.description
     expect(page).to have_content "Garbage"
     expect(page).to_not have_content "Pretty solid"
   end
