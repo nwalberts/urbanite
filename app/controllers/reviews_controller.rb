@@ -27,8 +27,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
-    @location = Location.find_by(params[:location_id])
+    @review = Review.find_by(params[:review_id])
+    @location = @review.location
     @review.destroy
     flash[:notice] = "Successfully deleted review!"
     redirect_to location_path(@location)
