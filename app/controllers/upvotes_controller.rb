@@ -17,8 +17,8 @@ class UpvotesController < ApplicationController
     @review = Review.find(params[:review_id])
     @user = current_user
     @vote = Vote.find_by(user_id: @user, review_id: @review)
-    @vote.default_vote
-    flash[:notice] = "Changed"
+    @vote.destroy
+    flash[:notice] = "Vote cancelled."
     redirect_to location_path(@review.location)
   end
 end

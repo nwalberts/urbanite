@@ -3,21 +3,21 @@
   <%= review.body %>
   Votes: <%= review.votes.tally %>
   </p>
-
-  <% if review.votes.find_by(user: current_user) && vote_value = 1 %>
-    <%= link_to "Upvote", review_downvote_path(review.id, review.user_vote(current_user)), method: :patch%>
+  <% target_vote = review.find_user(current_user) %>
+  <% if target_vote && target_vote.value = 1 %>
+    <%= link_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch%>
   <% else %>
     <%= link_to "Upvote", review_upvotes_path(review), method: :post%>
   <% end %>
 
-  <% if review.votes.find_by(user: current_user) && vote_value = 1 %>
-    <%= link_to "Downvote", review_downvote_path(review.id, review.user_vote(current_user)), method: :patch%>
+  <% if target_vote && target_vote.value = -1 %>
+    <%= link_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
   <% else %>
     <%= link_to "Downvote", review_downvotes_path(review), method: :post%>
   <% end %>
 
-  <% if review.votes.find_by(user: current_user) %>
-  <%= link_to "Cancel", review_downvote_path(review.id, review.user_vote(current_user)), method: :patch%>
+  <% if target_vote %>
+  <%= link_to "Cancel", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
   <% end %>
 
   <%= paginate @reviews %>
