@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
 
   def self.tally
     count = 0
-    tally = Vote.all.each do |vote|
+    Vote.all.each do |vote|
       count += vote.value
     end
     count
