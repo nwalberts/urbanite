@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:index, :new, :create, :show, :edit, :update]
 
+  resources :users, only: [:index, :destroy]
+
+  put 'admin/:id' => 'users#make_admin', :as => "make_admin"
+
   resources :locations do
     resources :reviews, only: [:new, :create, :show, :edit, :update]
   end

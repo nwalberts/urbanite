@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+    @users = User.all
   end
 
   def new
@@ -26,7 +27,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def edits
+  def edit
   end
 
   def update
