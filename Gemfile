@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
@@ -14,6 +15,8 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'fog'
 
+
+
 group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
@@ -27,4 +30,9 @@ end
 
 group :test do
   gem 'coveralls', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
 end
