@@ -12,6 +12,7 @@ describe Review do
   describe '#find_user' do
     context 'when the user has voted on the review' do
       it 'returns the vote for that user and that location' do
+        # binding.pry
         vote = FactoryGirl.create(:vote)
         review = vote.review
         user = vote.user
