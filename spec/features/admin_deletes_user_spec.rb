@@ -9,13 +9,13 @@ feature 'admin deletes a user' do
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
     click_button "Log in"
-    save_and_open_page
 
     click_link "Users"
-    expect(page).to have_content user.first_name
-    expect(page).to have_content "Delete"
 
-    click_on "Delete"
+    expect(page).to have_content user.first_name
+    expect(page).to have_button "Delete"
+
+    first(:button, 'Delete').click
     expect(page).to have_content "Successfully deleted user!"
     expect(page).to_not have_content user.first_name
   end

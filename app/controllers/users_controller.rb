@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order(:first_name).page params[:page]
   end
-
 
   def destroy
     @user = User.find(params[:id])
@@ -11,5 +10,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-
+  def make_admin
+    @user = User.find(params[:id])
+    @user.update_attribute :role, "admin"
+    flash[:notice] = "Successfully made user admin!"
+    redirect_to users_path
+  end
 end

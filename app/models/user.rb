@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   before_create :build_default_profile
 
+  paginates_per 10
+
   private
 
   def build_default_profile

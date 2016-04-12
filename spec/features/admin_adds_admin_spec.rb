@@ -12,10 +12,10 @@ feature 'admin adds an admin' do
 
     click_link "Users"
     expect(page).to have_content user.first_name
-    expect(page).to have_content "Make Admin"
+    expect(page).to have_button "Make Admin"
 
-    click_on "Make Admin"
+    first(:button, 'Make Admin').click
     expect(page).to have_content "Successfully made user admin!"
-    expect(page).to have_content "#{user.first_name} (Admin)"
+    expect(page).to have_content "#{user.first_name} #{user.last_name} #{user.email} (Admin)"
   end
 end
