@@ -1,4 +1,9 @@
 <h1>Cities</h1>
+  <%= form_tag(locations_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Cities" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
   <ul>
     <% @locations.each do |location| %>
       <li>
@@ -7,7 +12,9 @@
     <% end %>
   </ul>
 
-  <%= paginate @locations %>
+  <% if !params[:search] %>
+    <%= paginate @locations %>
+  <% end %>
 
 <%= link_to "Add New City", new_location_path %>
 <br />
