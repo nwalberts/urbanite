@@ -4,6 +4,7 @@
 <br>
 <%= render './reviews/index' %>
 
+
 <% if current_user %>
   <%= link_to 'Add a Review', new_location_review_path(@location) %>
 <% end %>
