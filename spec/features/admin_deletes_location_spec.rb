@@ -31,7 +31,6 @@ feature "admin deletes location" do
     expect(page).to have_content "Signed in successfully."
 
     visit "/locations"
-
     click_link "Boston"
 
     expect(page).to_not have_button("Delete City")
