@@ -1,8 +1,12 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all.order(:name).page params[:page]
     if user_signed_in?
       @profile = current_user.profile
+    end
+    if params[:search]
+      @locations = Location.search(params[:search]).order(:name)
+    else
+      @locations = Location.all.order(:name).page params[:page]
     end
   end
 
