@@ -17,4 +17,8 @@ class Location < ActiveRecord::Base
   validates :description, presence: true
 
   paginates_per 10
+
+  def self.search(query)
+    where("name like ?", "%#{query}%")
+  end
 end
