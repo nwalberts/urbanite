@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root "locations#index"
 
   resources :profiles, only: [:index, :new, :create, :show, :edit, :update]
-  # resources :locations
 
   resources :locations do
     resources :reviews, only: [:new, :create, :show, :edit, :update]
