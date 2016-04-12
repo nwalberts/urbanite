@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
     if user_signed_in?
       @profile = current_user.profile
     end
+
   end
 
   def show
