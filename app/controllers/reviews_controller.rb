@@ -8,11 +8,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @user = current_user
-    @location = Location.find(params[:location_id])
+    @location = @review.location
+    # @location = Location.find(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
 
     if @review.save
-      ReviewMailer.new_review(@review).deliver_later
+      # ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = "Review added successfully!"
       redirect_to location_path(@location)
     else
@@ -35,13 +36,15 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @location = Location.find_by(params[:location_id])
+    @location = @review.location
+    # @location = Location.find_by(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
   end
 
   def update
     @review = Review.find(params[:id])
-    @location = Location.find(params[:location_id])
+    @location = @review.location
+    # @location = Location.find(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
     if current_user == @review.user
       @review = Review.find(params[:id])
