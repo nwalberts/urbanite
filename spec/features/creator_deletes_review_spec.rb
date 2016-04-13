@@ -19,7 +19,6 @@ feature "creator deletes review" do
 
     expect(page).to have_button("Delete Review")
     click_on "Delete Review"
-
     expect(page).to_not have_content("4")
   end
 
