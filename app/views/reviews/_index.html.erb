@@ -3,8 +3,8 @@
   <%= review.body %>
   Votes: <%= review.votes.tally %>
   <% if current_user == review.user %>
-    <%= link_to 'Edit', edit_review_path(review) %>
-    <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
+    <%= link_to 'Edit Review', edit_review_path(review) %>
+    <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
   <% elsif current_user.admin? %>
     <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
   <% end %>

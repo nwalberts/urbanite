@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 feature "creator deletes review" do
-  let!(:user) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "bob@la.com", password: "password1") }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user2) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "bob@la.com", password: "password1") }
+  let!(:location) { FactoryGirl.create(:location) }
 
   scenario "creator deletes review that he/she created" do
-    FactoryGirl.create(:location)
-
     visit 'users/sign_in'
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Log in"
 
     visit "/locations"
-    click_link "Boston"
+    click_link location.name
     click_link "Add a Review"
     choose('review_rating_4')
     click_button "Submit"
@@ -23,7 +23,7 @@ feature "creator deletes review" do
   end
 
   scenario "unauthorized user does not see delete button" do
-    FactoryGirl.create(:review)
+    review = Review.create(rating: '4', location: location, user: user2)
 
     visit 'users/sign_in'
     fill_in "Email", with: user.email
@@ -35,6 +35,7 @@ feature "creator deletes review" do
 
     click_link "Boston"
 
+    expect(page).to have_content review.rating
     expect(page).to_not have_button("Delete Review")
   end
 end
