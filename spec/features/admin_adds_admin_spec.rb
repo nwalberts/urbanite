@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'admin adds an admin' do
-  let!(:admin) { FactoryGirl.create(:user, id: "2", role: "admin") }
+  let!(:admin) { FactoryGirl.create(:user, role: "admin") }
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'admin successfully adds an admin' do
