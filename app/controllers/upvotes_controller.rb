@@ -16,7 +16,7 @@ class UpvotesController < ApplicationController
   def update
     @review = Review.find(params[:review_id])
     @user = current_user
-    @vote = Vote.find_by(user_id: @user, review_id: @review)
+    @vote = Vote.find(params[:id])
     @vote.destroy
     flash[:notice] = "Vote cancelled."
     redirect_to location_path(@review.location)

@@ -9,21 +9,26 @@
     <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
   <% end %>
   </p>
-  <% target_vote = review.find_user(current_user) %>
-  <% if target_vote && target_vote.value = 1 %>
-    <%= link_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch%>
-  <% else %>
-    <%= link_to "Upvote", review_upvotes_path(review), method: :post%>
-  <% end %>
 
-  <% if target_vote && target_vote.value = -1 %>
-    <%= link_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
-  <% else %>
-    <%= link_to "Downvote", review_downvotes_path(review), method: :post%>
-  <% end %>
+  <div id="upvote-button">
+    <% target_vote = review.find_user(current_user) %>
+    <% if target_vote && target_vote.value = 1 %>
+      <%= button_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch %>
+    <% else %>
+      <%= button_to "Upvote", review_upvotes_path(review), method: :post%>
+    <% end %>
+  </div>
+
+  <div id="downvote-button">
+    <% if target_vote && target_vote.value = -1 %>
+      <%= button_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch %>
+    <% else %>
+      <%= button_to "Downvote", review_downvotes_path(review), method: :post %>
+    <% end %>
+  </div>
 
   <% if target_vote %>
-  <%= link_to "Cancel", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
+    <%= button_to "Cancel", review_downvote_path(review.id, review.find_user(current_user)), method: :patch %>
   <% end %>
   <br>
   <%= paginate @reviews %>
