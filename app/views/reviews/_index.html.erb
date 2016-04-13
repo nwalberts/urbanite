@@ -1,7 +1,9 @@
 <% @reviews.each do |review| %>
   <p><%= review.rating %>/5 --
   <%= review.body %>
-  Votes: <%= review.votes.tally %>
+  <div class="vote_total">
+    Votes: <%= review.votes.tally %>
+  </div>
   <% if current_user == review.user %>
     <%= link_to 'Edit', edit_review_path(review) %>
     <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
@@ -10,20 +12,21 @@
   <% end %>
   </p>
 
-  <div id="upvote-button">
+
+  <div class="upvote-button">
     <% target_vote = review.find_user(current_user) %>
     <% if target_vote && target_vote.value = 1 %>
-      <%= button_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch %>
+      <%= button_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), class: "patch_upvote", remote: true, method: :patch %>
     <% else %>
-      <%= button_to "Upvote", review_upvotes_path(review), method: :post%>
+      <%= button_to "Upvote", review_upvotes_path(review), class: "new_upvote", remote: true, method: :post%>
     <% end %>
   </div>
 
   <div id="downvote-button">
     <% if target_vote && target_vote.value = -1 %>
-      <%= button_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch %>
+      <%= button_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), class: "patch_downvote", remote: true, method: :patch %>
     <% else %>
-      <%= button_to "Downvote", review_downvotes_path(review), method: :post %>
+      <%= button_to "Downvote", review_downvotes_path(review), class: "new_downvote", remote: true, method: :post %>
     <% end %>
   </div>
 

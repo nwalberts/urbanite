@@ -1,23 +1,19 @@
 $(document).ready(function() {
-  $("#upvote").on("submit", function(event) {
+  $(".new_upvote").on("click", function(event) {
     event.preventDefault();
+    // /reviews/:review_id/upvotes
+    // var url = "/review/" + variable + "/upvotes"
+    var url = $(this).attr('href');
     debugger
-
-    updateUpvote();
+    //
+    updateUpvote(url);
   });
 });
 
-var updateUpvote = function(vote) {
-  var url = $(this).attr('href');
+var updateUpvote = function(url) {
   var request = $.ajax({
-    method: "PUT",
+    method: "POST",
     url: url,
     data: {  }
   });
-
-  // request.done(function() {
-  //
-  // })
-}
-
-// different ids for different types of upvotes
+};
