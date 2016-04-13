@@ -3,7 +3,7 @@
 ![Code Climate](https://codeclimate.com/github/nwalberts/urbanite.png)
 ![Coverage Status](https://coveralls.io/repos/nwalberts/urbanite/badge.png)
 
-Urbanite is a city review app built with Ruby on Rails. Urbanite was designed to provide users with a place to leave feedback about cities they have visited and give users a resource for gathering information on cities. Users may add cities or add reviews to existing cities. Reviews may be voted on by other users. 
+Urbanite is a city review app built with Ruby on Rails. Urbanite was designed to provide users with a place to leave feedback about cities they have visited and give users a resource for gathering information on cities. Users may add cities or add reviews to existing cities. Reviews may be voted on by other users.
 
 https://mighty-wildwood-43120.herokuapp.com/
 
@@ -34,3 +34,4 @@ https://mighty-wildwood-43120.herokuapp.com/
 * Model testing with Rspec
 * Styling framework with Foundation
 * Deployment on Heroku
+* Email development with MailCatcher. Use ``` gem install mailcatcher && mailcatcher ``` to run.
