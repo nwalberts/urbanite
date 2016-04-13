@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     @rating_collection = [1, 2, 3, 4, 5]
 
     if @review.save
-      # binding.pry
       ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = "Review added successfully!"
       redirect_to location_path(@location)
