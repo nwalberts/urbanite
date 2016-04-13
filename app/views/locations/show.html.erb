@@ -2,8 +2,8 @@
 <h2> State: <%= @location.state %> </h2>
 <p> Description: <%= @location.description %> </p>
 <br>
-<%= render './reviews/index' %>
 
+<%= render './reviews/index' %>
 
 <% if current_user %>
   <%= link_to 'Add a Review', new_location_review_path(@location) %>
