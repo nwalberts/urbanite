@@ -13,7 +13,6 @@ feature "user votes on a review", js: true do
 
   scenario "user upvotes a review" do
     visit root_path
-    save_and_open_page
     click_link review.location.name
 
     expect(page).to have_content("Votes: 0")

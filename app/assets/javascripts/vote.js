@@ -2,68 +2,68 @@ $(document).ready(function() {
   $(".new_upvote").on("click", function(event) {
     event.preventDefault();
 
-    var url = $(this).parent().attr('action');
+    var url = $(this).parent().attr("action");
     updateUpvote(url);
   });
 
   $(".new_downvote").on("click", function(event) {
     event.preventDefault();
 
-    var url = $(this).parent().attr('action');
+    var url = $(this).parent().attr("action");
     updateDownvote(url);
   });
 });
 
 var updateUpvote = function(url) {
-  var review_id = window.location.pathname.match(/\/(\d+)$/)[1];
-  var request = $.ajax({
+  var reviewId = window.location.pathname.match(/\/(\d+)$/)[1];
+  $.ajax({
     method: "POST",
     url: url,
-    data: { review_id: review_id },
+    data: { review_id: reviewId },
     success: function(responseData) {
       writeUpvote(responseData.id);
     },
     error: function()  {
-      console.log("error!");
+      alert("error!");
     }
   });
 };
 
 var writeUpvote = function(id) {
-  var review_id_selector = '#review-' + id;
-  var current_vote = $(review_id_selector).text();
-  if (current_vote == 1) {
-  $(review_id_selector).text(parseInt(current_vote) - 1);
-} else if (current_vote == -1) {
-    $(review_id_selector).text(parseInt(current_vote) + 2);
+  var reviewIdSelector = '#review-' + id;
+  var currentVote = $(reviewIdSelector).text();
+  if (currentVote == 1) {
+  $(reviewIdSelector).text(parseInt(currentVote) - 1);
+} else if (currentVote == -1) {
+    $(reviewIdSelector).text(parseInt(currentVote) + 2);
 } else {
-  $(review_id_selector).text(parseInt(current_vote) + 1);
+  $(reviewIdSelector).text(parseInt(currentVote) + 1);
 }
 };
 
 var updateDownvote = function(url) {
-  var review_id = window.location.pathname.match(/\/(\d+)$/)[1];
-  var request = $.ajax({
+  var reviewId = window.location.pathname.match(/\/(\d+)$/)[1];
+  $.ajax({
     method: "POST",
     url: url,
-    data: { review_id: review_id },
+    data: { review_id: reviewId },
     success: function(responseData) {
       writeDownvote(responseData.id);
     },
     error: function()  {
-      console.log("error!");
+      alert("error!");
     }
   });
 };
 
 var writeDownvote = function(id) {
-  var review_id_selector = '#review-' + id;
-  var current_vote = $(review_id_selector).text();
-  if (current_vote == -1) {
-  $(review_id_selector).text(parseInt(current_vote) + 1);
-} else if (current_vote == 1) {
-    $(review_id_selector).text(parseInt(current_vote) - 2);
+  var reviewIdSelector = "#review-" + id;
+  var currentVote = $(reviewIdSelector).text();
+  if (currentVote == -1) {
+  $(reviewIdSelector).text(parseInt(currentVote) + 1);
+} else if (currentVote == 1) {
+    $(reviewIdSelector).text(parseInt(currentVote) - 2);
 } else {
-  $(review_id_selector).text(parseInt(current_vote) - 1);
+  $(reviewIdSelector).text(parseInt(currentVote) - 1);
 }
 };

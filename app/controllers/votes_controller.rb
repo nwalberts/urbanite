@@ -7,8 +7,6 @@ class VotesController < ApplicationController
     @user = current_user
     if @vote.value == 1
       @vote.value = 0
-    else
-      @vote.value = 1
     end
 
     respond_to do |format|
@@ -25,8 +23,6 @@ class VotesController < ApplicationController
     @user = current_user
     if @vote.value == -1
       @vote.value = 0
-    else
-      @vote.value = -1
     end
 
     respond_to do |format|
@@ -38,7 +34,7 @@ class VotesController < ApplicationController
     end
   end
 
-  protected
+protected
 
  def pre_vote
    @review = Review.find(params[:review_id])
