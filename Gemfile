@@ -14,8 +14,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'fog'
-
-
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'capybara'
