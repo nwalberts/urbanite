@@ -10,8 +10,7 @@ class VotesController < ApplicationController
     else
       @vote.value = 1
     end
-
-
+    
     respond_to do |format|
       if @vote.save
         # format.html { redirect_to location_path(@review.location) }
