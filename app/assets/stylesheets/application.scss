@@ -16,13 +16,14 @@
 
  */
 
- $red: #D93240;
- $blue: #638CA6;
- $grey: #BFD4D9;
- $green: #0F5959;
- $teal: #17A697;
- $font-sans: "Copperplate", "Copperplate Gothic Light", sans-serif;
- $headers: Impact;
+$red: #d93240;
+$blue: #638ca6;
+$grey: #bfd4d9;
+$green: #0f5959;
+$teal: #17a697;
+$white: #ffffff;
+$font-sans: "Copperplate", "Copperplate Gothic Light", sans-serif;
+$headers: Impact;
 
 body {
   background-color: black;
@@ -51,14 +52,14 @@ h3 {
 }
 
 a {
-  color: darken(white, 10%);
+  color: darken($white, 10%);
   &:hover {
     color: $red;
   }
 }
 
 .nav-link {
-  color: white;
+  color: $white;
   &:hover {
     color: $red;
   }
@@ -91,17 +92,17 @@ p {
 }
 
 .pagination {
-  color: white;
-  background-color: white;
+  color: $white;
+  background-color: $white;
   width: 100%;
   padding: 0;
   margin: 0;
 }
 
 .user-list {
-  color: white;
+  color: $white;
 }
 
 label {
-  color: white;
+  color: $white;
 }
