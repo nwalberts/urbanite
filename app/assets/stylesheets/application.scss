@@ -25,39 +25,39 @@
  $headers: Impact;
 
 body {
- background-color: black;
- font-family: $font-sans;
+  background-color: black;
+  font-family: $font-sans;
 }
 
 h1 {
- color: $blue;
- font-family: $headers;
- font-size: 42pt;
- height: 100px;
- margin: auto;
- text-align: center;
- width: 276px;
+  color: $blue;
+  font-family: $headers;
+  font-size: 42pt;
+  height: 100px;
+  margin: auto;
+  text-align: center;
+  width: 276px;
 }
 
 h2 {
- color: lighten($blue, 10%);
- font-family: $headers;
- padding: 5px;
+  color: lighten($blue, 10%);
+  font-family: $headers;
+  padding: 5px;
 }
 
 h3 {
- color: $blue;
- font-family: $headers;
+  color: $blue;
+  font-family: $headers;
 }
 
 a {
-color: darken(white, 10%);
-&:hover {
-  color: $red;
+  color: darken(white, 10%);
+  &:hover {
+    color: $red;
   }
 }
 
-a.nav-link {
+.nav-link {
   color: white;
   &:hover {
     color: $red;
@@ -68,7 +68,7 @@ p {
   color: $blue;
 }
 
-ul.vertical.medium-horizontal.menu {
+.vertical.medium-horizontal.menu {
   background-color: transparent;
   font-size: 20px;
   padding-left: 20px;
