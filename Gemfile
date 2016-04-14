@@ -16,8 +16,6 @@ gem 'kaminari'
 gem 'fog'
 gem 'foundation-rails'
 
-
-
 group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
@@ -31,6 +29,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'poltergeist'
 end
 
 group :production do

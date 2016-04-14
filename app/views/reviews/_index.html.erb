@@ -11,16 +11,12 @@
     <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
   <% end %>
   </p>
-
   <div class="upvote-button">
       <%= button_to "Upvote", upvote_review_votes_path(review), class: "new_upvote", remote: true, method: :post%>
   </div>
-  
   <div class="downvote-button">
       <%= button_to "Downvote", downvote_review_votes_path(review), class: "new_downvote", remote: true, method: :post %>
   </div>
-
   <br>
   <%= paginate @reviews %>
-
 <% end %>

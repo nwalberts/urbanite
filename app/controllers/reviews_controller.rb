@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @rating_collection = [1, 2, 3, 4, 5]
 
     if @review.save
-      # ReviewMailer.new_review(@review).deliver_later
+      ReviewMailer.new_review(@review).deliver_later
       flash[:notice] = "Review added successfully!"
       redirect_to location_path(@location)
     else
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by(params[:review_id])
+    @review = Review.find(params[:id])
     @location = @review.location
     @review.destroy
     flash[:notice] = "Successfully deleted review!"

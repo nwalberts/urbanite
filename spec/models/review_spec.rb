@@ -9,14 +9,4 @@ describe Review do
 
   it { should have_valid(:body).when("Great city!", "What a pile of garbage.", nil, "") }
 
-  describe '#find_user' do
-    context 'when the user has voted on the review' do
-      it 'returns the vote for that user and that location' do
-        vote = FactoryGirl.create(:vote)
-        review = vote.review
-        user = vote.user
-        expect(review.find_user(user)).to eq(vote)
-      end
-    end
-  end
 end
