@@ -34,10 +34,10 @@ class VotesController < ApplicationController
     end
   end
 
-protected
+  protected
 
- def pre_vote
-   @review = Review.find(params[:review_id])
-   @vote = Vote.find_or_initialize_by(review: @review, user: current_user)
- end
+  def pre_vote
+    @review = Review.find(params[:review_id])
+    @vote = Vote.find_or_initialize_by(review: @review, user: current_user)
+  end
 end

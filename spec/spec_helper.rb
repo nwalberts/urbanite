@@ -7,7 +7,10 @@ RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
+  
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
   config.before :each do
     ActionMailer::Base.deliveries.clear
   end
@@ -26,10 +29,6 @@ RSpec.configure do |config|
 
   config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
   end
 
   config.after(:each) do
