@@ -5,12 +5,17 @@ class UpvotesController < ApplicationController
     @vote = Vote.new(review: @review, user: @user)
     @vote.value = 1
 
-    if @vote.save
-      flash[:notice] = "Vote added successfully!"
-    else
-      flash[:error] = "Vote not saved."
+    respond_to do |format|
+      if @vote.save
+        # format.html { redirect_to location_path(@review.location) }
+        format.json { render json: @review, status: 200 }
+        flash[:notice] = "Vote added successfully!"
+      else
+        # format.html { redirect_to location_path(@review.location) }
+        format.json { render :nothing, status: 500 }
+        flash[:error] = "Vote not saved."
+      end
     end
-    redirect_to location_path(@review.location)
   end
 
   def update
