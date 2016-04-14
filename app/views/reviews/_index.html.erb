@@ -12,27 +12,14 @@
   <% end %>
   </p>
 
-
   <div class="upvote-button">
-    <% target_vote = review.find_user(current_user) %>
-    <% if target_vote && target_vote.value = 1 %>
-      <%= button_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), class: "patch_upvote", remote: true, method: :patch %>
-    <% else %>
-      <%= button_to "Upvote", review_upvotes_path(review), class: "new_upvote", remote: true, method: :post%>
-    <% end %>
+      <%= button_to "Upvote", upvote_review_votes_path(review), class: "new_upvote", remote: true, method: :post%>
   </div>
-
+  
   <div class="downvote-button">
-    <% if target_vote && target_vote.value = -1 %>
-      <%= button_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), class: "patch_downvote", remote: true, method: :patch %>
-    <% else %>
-      <%= button_to "Downvote", review_downvotes_path(review), class: "new_downvote", remote: true, method: :post %>
-    <% end %>
+      <%= button_to "Downvote", downvote_review_votes_path(review), class: "new_downvote", remote: true, method: :post %>
   </div>
 
-  <% if target_vote %>
-    <%= button_to "Cancel", review_downvote_path(review.id, review.find_user(current_user)), method: :patch %>
-  <% end %>
   <br>
   <%= paginate @reviews %>
 

@@ -1,39 +1,56 @@
-class UpvotesController < ApplicationController
-  def create
+class VotesController < ApplicationController
+  before_action :pre_vote
+
+  def upvote
     @review = Review.find(params[:review_id])
     @user = current_user
-    @vote = Vote.new(review: @review, user: @user)
-    @vote.value = 1
+    binding.pry
+    while @vote.value < 2
+      if @vote.value == 1
+        @vote.value = 0
+      else
+        @vote.value = 1
+      end
+    end
 
     respond_to do |format|
       if @vote.save
         # format.html { redirect_to location_path(@review.location) }
         format.json { render json: @review, status: 200 }
-        flash[:notice] = "Vote added successfully!"
       else
         # format.html { redirect_to location_path(@review.location) }
         format.json { render :nothing, status: 500 }
-        flash[:error] = "Vote not saved."
       end
     end
   end
 
-  def update
+  def downvote
     @review = Review.find(params[:review_id])
     @user = current_user
-    @vote = Vote.find_by(user_id: @user, review_id: @review)
-    @vote.destroy
+
+    while @vote.value < 2
+      if @vote.value == -1
+        @vote.value = 0
+      else
+        @vote.value = -1
+      end
+    end
 
     respond_to do |format|
       if @vote.save
         # format.html { redirect_to location_path(@review.location) }
         format.json { render json: @review, status: 200 }
-        flash[:notice] = "Vote added successfully!"
       else
         # format.html { redirect_to location_path(@review.location) }
         format.json { render :nothing, status: 500 }
-        flash[:error] = "Vote not saved."
       end
     end
   end
+
+  protected
+
+ def pre_vote
+   @review = Review.find(params[:review_id])
+   @vote = Vote.find_or_initialize_by(review: @review, user: current_user)
+ end
 end
