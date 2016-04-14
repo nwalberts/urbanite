@@ -6,6 +6,10 @@ $(document).ready(function() {
     var url = $(this).parent().attr('action');
     updateUpvote(url);
   });
+
+  $(".patch_upvote").on("click", function(event) {
+    event.preventDefault();
+  });
 });
 
 var updateUpvote = function(url) {
