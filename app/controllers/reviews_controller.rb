@@ -3,6 +3,9 @@ class ReviewsController < ApplicationController
     @location = Location.find(params[:location_id])
     @review = Review.new
     @rating_collection = [1, 2, 3, 4, 5]
+    if user_signed_in?
+      @profile = current_user.profile
+    end
   end
 
   def create
@@ -18,6 +21,9 @@ class ReviewsController < ApplicationController
     else
       flash[:error] = "Review must have rating."
       render :new
+    end
+    if user_signed_in?
+      @profile = current_user.profile
     end
   end
 

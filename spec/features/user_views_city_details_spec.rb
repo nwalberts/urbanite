@@ -36,7 +36,7 @@ feature "visitor sees show page for a city" do
     fill_in "Body", with: "Pretty solid"
     click_button "Submit"
 
-    9.times do
+    11.times do
       click_link "Add a Review"
       choose('review_rating_5')
       click_button "Submit"
