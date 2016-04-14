@@ -11,12 +11,13 @@
         <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
       <% end %>
       </p>
+      <p>
       <% target_vote = review.find_user(current_user) %>
       <% if target_vote && target_vote.value = 1 %>
         <%= link_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch%>
       <% else %>
         <%= link_to "Upvote", review_upvotes_path(review), method: :post%>
-      <% end %>
+      <% end %> | 
 
       <% if target_vote && target_vote.value = -1 %>
         <%= link_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
@@ -28,6 +29,7 @@
       <%= link_to "Cancel", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
       <% end %>
       <br>
+    </p>
       <%= paginate @reviews %>
 
     </div>

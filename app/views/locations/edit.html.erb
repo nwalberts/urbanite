@@ -1,8 +1,8 @@
-<h1>Edit City Form</h1>
+<h2>Edit City Form</h2>
 
 <%= render 'form' %>
 
-<%= link_to "Nevermind", location_path(@location) %>
+<%= link_to "Go Back", location_path(@location) %>
   <% if current_user.admin?  %>
     <%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %>
   <% end %>

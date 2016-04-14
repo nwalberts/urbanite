@@ -1,19 +1,17 @@
 <h2>Cities</h2>
 
-  <ul>
-    <% @locations.each do |location| %>
-      <li>
-        <%= link_to location.name, location_path(location) %>
-      </li>
-    <% end %>
-  </ul>
-
-    <% if user_signed_in? %>
-    <%= link_to "View Profile", profile_path(@profile) %>
-    <% end %>
-
-<ul class="pagination" role="menubar" aria-label="Pagination">
-  <% if !params[:search] %>
-    <%= paginate @locations %>
+<ul>
+  <% @locations.each do |location| %>
+    <li>
+      <%= link_to location.name, location_path(location) %>
+    </li>
   <% end %>
 </ul>
+
+<% if user_signed_in? %>
+  <%= link_to "View Profile", profile_path(@profile) %>
+<% end %>
+
+<% if !params[:search] %>
+  <%= paginate @locations %>
+<% end %>

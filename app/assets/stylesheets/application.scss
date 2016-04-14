@@ -25,44 +25,51 @@
  $headers: Impact;
 
  body {
-   background-color: $grey;
+   background-color: black;
    font-family: $font-sans;
  }
 
  h1 {
-   padding: 10px;
-   padding-top: 20px;
-   color: lighten($blue, 16%);
+   margin: auto;
+   color: $blue;
+   text-align: center;
    font-family: $headers;
-   width: 200px;
+   width: 276px;
+   height: 100px;
    font-size: 42pt;
  }
 
  h2 {
-   color: $teal;
+   color: lighten($blue, 10%);
    font-family: $headers;
    padding: 5px;
  }
 
  h3 {
-   color: darken($teal, 10%);
+   color: $blue;
    font-family: $headers;
  }
 
  a {
-  color: $green;
+  color: darken(white, 10%);
+  &:hover {
+    color: $red;
+    }
   }
 
-  a:hover {
-    color: $red;
+  a.nav-link {
+    color: white;
+    &:hover {
+      color: $red;
+    }
   }
 
   p {
-    color: darken($teal, 30%)
+    color: $blue;
   }
 
   ul.vertical.medium-horizontal.menu {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-left: 20px;
     background-color: transparent;
     font-size: 20px;
@@ -75,27 +82,26 @@
     height: 225px;
   }
 
-  .top-bar-left {
-    background-color: transparent;
-  }
-
-  .top-bar-right {
-    background-color: transparent;
-  }
-
   .dropdown.menu {
     background-color: transparent;
   }
 
-  menu {
-    background-color: transparent;
-  }
-
-  a.nav {
-    background-color: transparent;
-    color: $red;
-  }
-
   .callout.secondary {
-    background-color: lighten($blue, 10%);
+    background-color: lighten(black, 10%);
+  }
+
+  .pagination {
+    color: white;
+    background-color: white;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .user-list {
+    color: white;
+  }
+
+  label {
+    color: white;
   }

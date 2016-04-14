@@ -1,11 +1,11 @@
 <%= form_for @location, as: :location, url: location_path(@location), method: :patch do |f| %>
-  <%=f.label :name %>
+  <%=f.label :name, style: "color:white" %>
   <%=f.text_field :name %>
 
-  <%=f.label :state %>
+  <%=f.label :state, style: "color:white" %>
   <%= f.select(:state, options_for_select(@state_collection)) %>
 
-  <%=f.label :description %>
+  <%=f.label :description, style: "color:white" %>
   <%=f.text_area :description %>
 
   <%= f.submit "Submit" %>

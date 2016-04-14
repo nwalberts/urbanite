@@ -17,31 +17,31 @@
         <ul class="dropdown menu" data-dropdown-menu>
           <h1><li class="menu-text">Urbanite</a></li></h1></ul>
           <ul class="vertical medium-horizontal menu">
-          <li class="nav"><%= link_to "Go Home", locations_path %></li>
+          <li class="nav"><%= link_to "Go Home", locations_path, class: "nav-link"  %></li>
           <li>
             <% if current_user %>
-              <%= link_to "Add New City", new_location_path %>
+              <%= link_to "Add New City", new_location_path, class: "nav-link" %>
             <% end %>
           </li>
 
             <% if current_user == nil %>
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li><%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
             <% elsif current_user.admin? %>
-              <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to "Users", users_path, class: "nav-link" %></li>
             <% end %>
           <li>
             <% if current_user %>
-              <%= link_to "Log Out", destroy_user_session_path %>
+              <%= link_to "Log Out", destroy_user_session_path, class: "nav-link" %>
             <% end %>
           </li>
         </ul>
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <%= form_tag(locations_path, :method => "get", id: "search-form") do %>
+          <%= form_tag(locations_path, :method => "get", id: "search-form", style: "background-color:white") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Cities" %>
-            <%= submit_tag "Search", :name => nil %>
+            <%= submit_tag "Search", :name => nil, style: "background-color:white" %>
           <% end %>
         </ul>
       </div>
