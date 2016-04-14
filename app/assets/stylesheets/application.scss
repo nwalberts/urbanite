@@ -1,0 +1,111 @@
+// /*
+//  * This is a manifest file that'll be compiled into application.css, which will include all the files
+//  * listed below.
+//  *
+//  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+//  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+//  *
+//  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+//  * compiled file so the styles you add here take precedence over styles defined in any styles
+//  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+//  * file per style scope.
+//  *
+//  *= require_tree .
+//  *= require_self
+//  *= require foundation_and_overrides
+//
+//  */
+
+$red: #d93240;
+$blue: #638ca6;
+$grey: #bfd4d9;
+$green: #0f5959;
+$teal: #17a697;
+$white: #ffffff;
+$black: #000000;
+$font-sans: "Copperplate", "Copperplate Gothic Light", sans-serif;
+$headers: Impact;
+
+body {
+  background-color: $black;
+  font-family: $font-sans;
+}
+
+h1 {
+  color: $blue;
+  font-family: $headers;
+  font-size: 42pt;
+  height: 100px;
+  margin: auto;
+  text-align: center;
+  width: 276px;
+}
+
+h2 {
+  color: lighten($blue, 10%);
+  font-family: $headers;
+  padding: 5px;
+}
+
+h3 {
+  color: $blue;
+  font-family: $headers;
+}
+
+a {
+  color: darken($white, 10%);
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.nav-link {
+  color: $white;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+p {
+  color: $blue;
+}
+
+.vertical.medium-horizontal.menu {
+  background-color: transparent;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-top: 70px;
+}
+
+.top-bar {
+  background-color: darken($grey, 10%);
+  background-image: url("http://ecx.images-amazon.com/images/I/51pZII3acZL._SL1500_.jpg");
+  background-position: center;
+  height: 225px;
+}
+
+.dropdown.menu {
+  background-color: transparent;
+}
+
+.callout.secondary {
+  background-color: lighten($black, 10%);
+}
+
+.pagination {
+  background-color: $white;
+  color: $white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.user-list {
+  color: $white;
+}
+
+label {
+  color: $white;
+}

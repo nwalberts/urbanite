@@ -1,8 +1,15 @@
 require 'rails_helper'
 feature "visitor sees a list of cities" do
+  let!(:user) { FactoryGirl.create(:user) }
+
   scenario "sees a list of cities and link for new city" do
     boston = FactoryGirl.create(:location)
     newyork = FactoryGirl.create(:location, name: "New York", state: "NY")
+
+    visit 'users/sign_in'
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Log in"
 
     visit locations_path
 
