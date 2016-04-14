@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by(params[:review_id])
+    @review = Review.find(params[:id])
     @location = @review.location
     @review.destroy
     flash[:notice] = "Successfully deleted review!"
@@ -35,13 +35,15 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @location = Location.find_by(params[:location_id])
+    @location = @review.location
+    # @location = Location.find_by(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
   end
 
   def update
     @review = Review.find(params[:id])
-    @location = Location.find(params[:location_id])
+    @location = @review.location
+    # @location = Location.find(params[:location_id])
     @rating_collection = [1, 2, 3, 4, 5]
     if current_user == @review.user
       @review = Review.find(params[:id])
