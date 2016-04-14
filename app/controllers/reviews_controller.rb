@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @rating_collection = [1, 2, 3, 4, 5]
 
     if @review.save
-      ReviewMailer.new_review(@review).deliver_later
+      ReviewMailer.new_review(@review).deliver
       flash[:notice] = "Review added successfully!"
       redirect_to location_path(@location)
     else

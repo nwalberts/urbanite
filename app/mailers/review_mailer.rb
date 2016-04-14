@@ -1,4 +1,6 @@
-class ReviewMailer < ApplicationMailer
+class ReviewMailer < ActionMailer::Base
+  default from: "\"Urbanite\" nwalberts5@gmail.com"
+  
   def new_review(review)
     @review = review
 
