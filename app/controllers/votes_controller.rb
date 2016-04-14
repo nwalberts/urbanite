@@ -4,14 +4,13 @@ class VotesController < ApplicationController
   def upvote
     @review = Review.find(params[:review_id])
     @user = current_user
-    binding.pry
-    while @vote.value < 2
-      if @vote.value == 1
-        @vote.value = 0
-      else
-        @vote.value = 1
-      end
+
+    if @vote.value == 1
+      @vote.value = 0
+    else
+      @vote.value = 1
     end
+
 
     respond_to do |format|
       if @vote.save
@@ -28,13 +27,13 @@ class VotesController < ApplicationController
     @review = Review.find(params[:review_id])
     @user = current_user
 
-    while @vote.value < 2
-      if @vote.value == -1
-        @vote.value = 0
-      else
-        @vote.value = -1
-      end
+
+    if @vote.value == -1
+      @vote.value = 0
+    else
+      @vote.value = -1
     end
+
 
     respond_to do |format|
       if @vote.save
