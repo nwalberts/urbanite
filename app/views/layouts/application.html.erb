@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Urbanite" %></title>
 
     <%= stylesheet_link_tag    "application", media: 'all' %>
     <%= javascript_include_tag "application" %>
@@ -15,7 +15,9 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <h1><li class="menu-text"><a href="/locations">Urbanite</a></li></h1>
+          <h1><li class="menu-text">Urbanite</a></li></h1></ul>
+          <ul class="vertical medium-horizontal menu">
+          <li class="nav"><%= link_to "Go Home", locations_path %></li>
           <li>
             <% if current_user %>
               <%= link_to "Add New City", new_location_path %>

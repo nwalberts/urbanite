@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+
+ $red: #D93240;
+ $blue: #638CA6;
+ $grey: #BFD4D9;
+ $green: #0F5959;
+ $teal: #17A697;
+ $font-sans: "Copperplate", "Copperplate Gothic Light", sans-serif;
+ $headers: Impact;
+
+ body {
+   background-color: $grey;
+   font-family: $font-sans;
+ }
+
+ h1 {
+   padding: 10px;
+   padding-top: 20px;
+   color: lighten($blue, 16%);
+   font-family: $headers;
+   width: 200px;
+   font-size: 42pt;
+ }
+
+ h2 {
+   color: $teal;
+   font-family: $headers;
+   padding: 5px;
+ }
+
+ h3 {
+   color: darken($teal, 10%);
+   font-family: $headers;
+ }
+
+ a {
+  color: $green;
+  }
+
+  a:hover {
+    color: $red;
+  }
+
+  p {
+    color: darken($teal, 30%)
+  }
+
+  ul.vertical.medium-horizontal.menu {
+    padding-top: 50px;
+    padding-left: 20px;
+    background-color: transparent;
+    font-size: 20px;
+  }
+
+  .top-bar {
+    background-color: darken($grey, 10%);
+    background-image: url("http://ecx.images-amazon.com/images/I/51pZII3acZL._SL1500_.jpg");
+    background-position: center;
+    height: 225px;
+  }
+
+  .top-bar-left {
+    background-color: transparent;
+  }
+
+  .top-bar-right {
+    background-color: transparent;
+  }
+
+  .dropdown.menu {
+    background-color: transparent;
+  }
+
+  menu {
+    background-color: transparent;
+  }
+
+  a.nav {
+    background-color: transparent;
+    color: $red;
+  }
+
+  .callout.secondary {
+    background-color: lighten($blue, 10%);
+  }

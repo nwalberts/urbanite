@@ -35,3 +35,4 @@ https://mighty-wildwood-43120.herokuapp.com/
 * Styling framework with Foundation
 * Deployment on Heroku
 * Email development with MailCatcher. Use ``` gem install mailcatcher && mailcatcher ``` to run.
+* Email production with SendGrid & Heroku
