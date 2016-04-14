@@ -9,10 +9,17 @@ $(document).ready(function() {
 
   $(".patch_upvote").on("click", function(event) {
     event.preventDefault();
-    // /reviews/:review_id/upvotes
-    // var url = "/review/" + variable + "/upvotes"
+
     var url = $(this).parent().attr('action');
     patchUpvote(url);
+  });
+
+  $(".new_downvote").on("click", function(event) {
+    event.preventDefault();
+
+    // var url = $(this).parent().attr('action');
+    // patchUpvote(url);
+  });
 });
 
 var patchUpvote = function(url) {
@@ -22,7 +29,6 @@ var patchUpvote = function(url) {
     url: url,
     data: { review_id: review_id }, // integer
     success: function(responseData) {
-      debugger;
       cancelUpvote(responseData.id);
     },
     error: function()  {

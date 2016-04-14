@@ -22,7 +22,7 @@
     <% end %>
   </div>
 
-  <div id="downvote-button">
+  <div class="downvote-button">
     <% if target_vote && target_vote.value = -1 %>
       <%= button_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), class: "patch_downvote", remote: true, method: :patch %>
     <% else %>

@@ -19,7 +19,6 @@ class UpvotesController < ApplicationController
   end
 
   def update
-    binding.pry
     @review = Review.find(params[:review_id])
     @user = current_user
     @vote = Vote.find_by(user_id: @user, review_id: @review)
