@@ -4,16 +4,18 @@
 #   let!(:user) { User.create(first_name: "Greg", last_name: "Ward", home_location: "Boston", email: "bob@la.com", password: "password1") }
 #   let!(:review) { FactoryGirl.create(:review) }
 #
-#   before :each do
-#     visit 'users/sign_in'
-#     fill_in "Email", with: user.email
-#     fill_in "Password", with: user.password
-#     click_button "Log in"
-#   end
+#
+#   # before :each do
+#   #   visit 'users/sign_in'
+#   #   fill_in "Email", with: user.email
+#   #   fill_in "Password", with: user.password
+#   #   click_button "Log in"
+#   # end
 #
 #   scenario "user upvotes a review", js: true do
 #     visit root_path
 #     click_link review.location.name
+#     click_link "Add a Review"
 #
 #     expect(page).to have_content("Votes: 0")
 #     click_button "Upvote"
@@ -31,8 +33,6 @@
 #
 #   scenario "user cancels upvote with another upvote", js: true do
 #     visit root_path
-#     visit root_path
-#
 #     click_link review.location.name
 #
 #     expect(page).to have_content("Votes: 0")

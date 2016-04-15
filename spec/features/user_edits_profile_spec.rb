@@ -10,7 +10,7 @@ feature 'user edits profile' do
     visit '/'
     click_link "View Profile"
     click_link "Change profile picture"
-    attach_file('Avatar', Rails.root + 'spec/fixtures/jarvis.jpg')
+    attach_file('Avatar', Rails.root + 'spec/fixtures/boston.jpg')
     click_button 'Update Profile'
 
     expect(page).to have_xpath("//img")
