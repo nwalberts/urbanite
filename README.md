@@ -5,7 +5,7 @@
 
 Urbanite is a city review app built with Ruby on Rails. Urbanite was designed to provide users with a place to leave feedback about cities they have visited and give users a resource for gathering information on cities. Users may add cities or add reviews to existing cities. Reviews may be voted on by other users.
 
-https://mighty-wildwood-43120.herokuapp.com/
+[Urbanite Website](https://urbanite-group-project.herokuapp.com/)
 
 ## Contributors
 * Nick Alberts
