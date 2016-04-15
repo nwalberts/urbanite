@@ -18,6 +18,19 @@ feature 'User searches for a city' do
     expect(page).to_not have_content bahston.name
   end
 
+  scenario 'User searches lowercase' do
+    visit locations_path
+
+    fill_in 'search', with: "san"
+    click_button 'Search'
+
+    expect(page).to have_content san_fran.name
+    expect(page).to have_content san_diego.name
+    expect(page).to have_content san_juan.name
+    expect(page).to_not have_content bahston.name
+
+  end
+
   scenario 'User searches blank field' do
     visit locations_path
 
