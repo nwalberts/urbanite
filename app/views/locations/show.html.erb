@@ -1,5 +1,4 @@
-
-<div class="row">
+<div class="row column">
   <div class="medium-6 columns">
 
     <h2> <%= @location.name %> </h2>
@@ -30,7 +29,6 @@
     <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.name %>,<%= @location.state %>&zoom=11&size=400x300&scale=3&key<%= ENV['STATIC_MAPS'] %>" />
   </div>
 </div>
-
-<br />
+<br>
 
 <%= render './reviews/index' %>

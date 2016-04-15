@@ -1,26 +1,28 @@
 <% @reviews.each do |review| %>
-<div class="small-4 columns">
-  <div class="callout secondary">
-  <p><%= review.rating %>/5 --
-  <%= review.body %>
-  <div class="vote_total">
-    Votes: <div id="review-<%= review.id %>" class="vote-number"><%= review.votes.tally %></div>
+  <div class="small-4 columns end">
+    <div class="callout secondary">
+      <p>
+        <font size="5"><%= review.rating %>/5 --
+        <%= review.body %></font>
+        <div class="vote_total">
+          Votes: <div id="review-<%= review.id %>" class="vote-number"><%= review.votes.tally %></div>
+        </div>
+        <div class="edit">
+          <% if current_user == review.user %>
+            <%= link_to 'Edit Review', edit_review_path(review) %> <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
+          <% elsif current_user.admin? %>
+            <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
+          <% end %>
+        </div>
+      </p>
+      <div class="upvote-button">
+        <%= button_to "Upvote", upvote_review_votes_path(review), class: "new_upvote", remote: true, method: :post%>
+      </div>
+      <div class="downvote-button">
+        <%= button_to "Downvote", downvote_review_votes_path(review), class: "new_downvote", remote: true, method: :post %>
+      </div>
+      <br>
+      <%= paginate @reviews %>
+    </div>
   </div>
-  <% if current_user == review.user %>
-    <%= link_to 'Edit Review', edit_review_path(review) %>
-    <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
-  <% elsif current_user.admin? %>
-    <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
-  <% end %> 
-  </p>
-  <div class="upvote-button">
-      <%= button_to "Upvote", upvote_review_votes_path(review), class: "new_upvote", remote: true, method: :post%>
-  </div>
-  <div class="downvote-button">
-      <%= button_to "Downvote", downvote_review_votes_path(review), class: "new_downvote", remote: true, method: :post %>
-  </div>
-  <br>
-  <%= paginate @reviews %>
-</div>
-</div>
 <% end %>
