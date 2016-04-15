@@ -4,7 +4,7 @@
   <p><%= review.rating %>/5 --
   <%= review.body %>
   <div class="vote_total">
-    Votes: <div id="review-<%= review.id %>" class="vote-number"><%= review.votes.tally %></ div>
+    Votes: <div id="review-<%= review.id %>" class="vote-number"><%= review.votes.tally %></div>
   </div>
   <% if current_user == review.user %>
     <%= link_to 'Edit Review', edit_review_path(review) %>
