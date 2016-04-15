@@ -8,7 +8,6 @@ feature "User authentication" do
   end
 
   scenario "successful sign up" do
-
     visit '/users/sign_up'
     fill_in "First name", with: furiosa.first_name
     fill_in "Last name", with: furiosa.last_name
@@ -20,6 +19,22 @@ feature "User authentication" do
     click_button "Sign up"
 
     expect(page).to have_content "You have signed up successfully"
+  end
+
+  scenario "a profile is created on sign up" do
+    visit '/users/sign_up'
+    fill_in "First name", with: furiosa.first_name
+    fill_in "Last name", with: furiosa.last_name
+    fill_in "Home location", with: furiosa.home_location
+    fill_in "Email", with: furiosa.email
+    fill_in "Password", with: furiosa.password
+    fill_in "Password confirmation", with: furiosa.password
+    click_button "Sign up"
+
+    visit locations_path
+    click_link "View Profile"
+
+    expect(page).to have_content furiosa.first_name
   end
 
   scenario "unsuccessful sign up" do
