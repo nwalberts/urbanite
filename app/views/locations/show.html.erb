@@ -3,17 +3,16 @@
 <p> Description: <%= @location.description %> </p>
 <br>
 
-<% if current_user == nil %>
-  Want to add a review? Please <%= link_to 'sign in', new_user_session_path %>
-<% end %>
-
 <div class="links">
   <ul class="breadcrumbs">
     <li><%= link_to 'Back', locations_path, class: "nav-link" %></li>
     <% if current_user %>
       <li><%= link_to 'Add a Review', new_location_review_path(@location), class: "nav-link" %></li>
     <% end %>
-    <% if current_user == @location.user %>
+
+    <% if current_user == nil %>
+      <p>Want to add a review? Please <%= link_to 'sign in', new_user_session_path %></p>
+    <% elsif current_user == @location.user %>
       <li><%= link_to 'Edit City', edit_location_path(@location), class: "nav-link" %></li>
       <li><%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %></li>
     <% elsif current_user.admin? %>
