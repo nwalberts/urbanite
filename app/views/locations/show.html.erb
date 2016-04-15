@@ -1,24 +1,36 @@
-<h2> <%= @location.name %> </h2>
-<h3> State: <%= @location.state %> </h3>
-<p> Description: <%= @location.description %> </p>
-<br>
 
-<div class="links">
-  <ul class="breadcrumbs">
-    <li><%= link_to 'Back', locations_path, class: "nav-link" %></li>
-    <% if current_user %>
-      <li><%= link_to 'Add a Review', new_location_review_path(@location), class: "nav-link" %></li>
-    <% end %>
+<div class="row">
+  <div class="medium-6 columns">
 
-    <% if current_user == nil %>
-      <p>Want to add a review? Please <%= link_to 'sign in', new_user_session_path, style: "color:white" %></p>
-    <% elsif current_user == @location.user %>
-      <li><%= link_to 'Edit City', edit_location_path(@location), class: "nav-link" %></li>
-      <li><%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %></li>
-    <% elsif current_user.admin? %>
-      <li><%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %></li>
-    <% end %>
-  </ul>
+    <h2> <%= @location.name %> </h2>
+    <h3> State: <%= @location.state %> </h3>
+    <p> Description: <%= @location.description %> </p>
+    <br>
+
+    <div class="links">
+      <ul class="breadcrumbs">
+        <li><%= link_to 'Back', locations_path, class: "nav-link" %></li>
+        <% if current_user %>
+          <li><%= link_to 'Add a Review', new_location_review_path(@location), class: "nav-link" %></li>
+        <% end %>
+
+        <% if current_user == nil %>
+          <p>Want to add a review? Please <%= link_to 'sign in', new_user_session_path, style: "color:white" %></p>
+        <% elsif current_user == @location.user %>
+          <li><%= link_to 'Edit City', edit_location_path(@location), class: "nav-link" %></li>
+          <li><%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %></li>
+        <% elsif current_user.admin? %>
+          <li><%= button_to 'Delete City', @location, method: :delete, data: { confirm: 'Are you sure?'} %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="medium-6 columns">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.name %>,<%= @location.state %>&zoom=11&size=400x300&scale=3&key<%= ENV['STATIC_MAPS'] %>" />
+  </div>
 </div>
+
+<br />
 
 <%= render './reviews/index' %>
