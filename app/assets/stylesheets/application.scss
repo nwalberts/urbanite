@@ -100,7 +100,23 @@ p {
 
 .callout.secondary {
   background-color: lighten($black, 10%);
-  min-height: 140px;
+  min-height: 200px;
+
+  .vote-total {
+    color: $white;
+
+    .vote-number {
+      display: inline-block;
+    }
+  }
+
+  .upvote-button {
+    display: inline-block;
+  }
+
+  .downvote-button {
+    display: inline-block;
+  }
 }
 
 .pagination {
