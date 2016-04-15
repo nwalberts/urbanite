@@ -5,10 +5,11 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'carrierwave/orm/activerecord'
 require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
-Capybara.javascript_driver = :poltergeist
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -17,5 +18,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FactoryGirl::Syntax::Methods
   config.use_transactional_fixtures = false
-
 end
