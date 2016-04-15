@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature "user adds new review to location" do
   let!(:review) { FactoryGirl.create(:review) }
 
