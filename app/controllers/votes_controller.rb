@@ -27,7 +27,6 @@ class VotesController < ApplicationController
       @vote.value = 0
     end
 
-
     respond_to do |format|
       if @vote.save
         format.json { render json: @review, status: 200 }
