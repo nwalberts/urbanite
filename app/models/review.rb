@@ -7,9 +7,5 @@ class Review < ActiveRecord::Base
   validates :user, presence: true
   validates :location, presence: true
 
-  def find_user(user)
-    votes.find_by(user: user)
-  end
-
   paginates_per 12
 end

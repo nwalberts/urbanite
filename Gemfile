@@ -29,6 +29,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'poltergeist'
 end
 
 group :production do

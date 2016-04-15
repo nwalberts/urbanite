@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 feature "user may view their profile information" do
-  # As a user
-  # I want to view my profile
-  # So I can see my account information
-
   let(:imperator) do
     FactoryGirl.create(:user)
   end

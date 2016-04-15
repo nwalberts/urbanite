@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature "user adds new review to location" do
   let!(:review) { FactoryGirl.create(:review) }
