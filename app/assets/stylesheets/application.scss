@@ -39,6 +39,7 @@ h1 {
   margin: auto;
   text-align: center;
   width: 276px;
+  padding-left: 120px;
 }
 
 h2 {
@@ -60,11 +61,13 @@ a {
   }
 }
 
-.nav-link {
-  color: $white;
+.breadcrumbs {
+  .nav-link {
+    color: $white;
 
-  &:hover {
-    color: $red;
+    &:hover {
+      color: $red;
+    }
   }
 }
 
@@ -92,14 +95,24 @@ p {
 
 .callout.secondary {
   background-color: lighten($black, 10%);
+  min-height: 140px;
 }
 
 .pagination {
-  background-color: $white;
-  color: $white;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  li {
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: $red;
+      }
+    }
+
+    &.current {
+      background-color: $blue;
+    }
+  }
 }
 
 .user-list {
@@ -108,4 +121,8 @@ p {
 
 label {
   color: $white;
+}
+
+.row.column:last-child {
+  margin-bottom: 15px;
 }

@@ -15,7 +15,7 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <h1><li class="menu-text">Urbanite</a></li></h1></ul>
+          <li class="menu-text"><h1>Urbanite</h1></li></ul>
           <ul class="vertical medium-horizontal menu">
           <li class="nav"><%= link_to "Go Home", locations_path, class: "nav-link"  %></li>
           <li>
@@ -52,7 +52,7 @@
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
         <div data-alert class="alert-box round <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
-          <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+          <%= content_tag(:div, msg, class: "alert alert-#{name}", style: "color:white") %>
         </div>
       <% end %>
     <% end %>

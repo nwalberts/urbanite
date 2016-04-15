@@ -4,7 +4,8 @@
       <p><%= review.rating %>/5 --
       <%= review.body %>
       Votes: <%= review.votes.tally %>
-      <% if current_user == review.user %>
+      <% if current_user == nil %>
+      <% elsif current_user == review.user %>
         <%= link_to 'Edit Review', edit_review_path(review) %>
         <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
       <% elsif current_user.admin? %>
@@ -17,7 +18,7 @@
         <%= link_to "Upvote", review_upvote_path(review.id, review.find_user(current_user)), method: :patch%>
       <% else %>
         <%= link_to "Upvote", review_upvotes_path(review), method: :post%>
-      <% end %> | 
+      <% end %> |
 
       <% if target_vote && target_vote.value = -1 %>
         <%= link_to "Downvote", review_downvote_path(review.id, review.find_user(current_user)), method: :patch%>
