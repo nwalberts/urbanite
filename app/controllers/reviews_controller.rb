@@ -54,9 +54,6 @@ class ReviewsController < ApplicationController
       if @review.update(review_params)
         flash[:notice] = "Successfully updated review!"
         redirect_to location_path(@location)
-      else
-        flash[:alert] = "You are not allowed to edit this review!"
-        render :edit
       end
     end
   end
