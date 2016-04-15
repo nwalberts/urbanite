@@ -7,5 +7,5 @@ class Review < ActiveRecord::Base
   validates :user, presence: true
   validates :location, presence: true
 
-  paginates_per 10
+  paginates_per 12
 end

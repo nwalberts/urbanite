@@ -1,13 +1,13 @@
-<h1>New City Form </h1>
+<h2>New City Form </h2>
 
 <%= form_for @location do |f| %>
-  <%=f.label :name %>
+  <%=f.label :name, style: "color:white" %>
   <%=f.text_field :name %>
 
-  <%=f.label :state %>
+  <%=f.label :state, style: "color:white" %>
   <%= f.select(:state, options_for_select(@state_collection)) %>
 
-  <%=f.label :description %>
+  <%=f.label :description, style: "color:white" %>
   <%=f.text_area :description %>
 
   <%= f.submit "Add City" %>

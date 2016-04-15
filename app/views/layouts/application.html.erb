@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Urbanite" %></title>
 
     <%= stylesheet_link_tag    "application", media: 'all' %>
     <%= javascript_include_tag "application" %>
@@ -15,28 +15,52 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text"><a href="/locations">Urbanite</a></li>
+          <li class="menu-text"><h1>Urbanite</h1></li></ul>
+          <ul class="vertical medium-horizontal menu">
+          <li class="nav"><%= link_to "Go Home", locations_path, class: "nav-link"  %></li>
           <li>
-            <a href="#">One</a>
+            <% if current_user %>
+              <%= link_to "Add New City", new_location_path, class: "nav-link" %>
+            <% end %>
+          </li>
+
+            <% if current_user == nil %>
+              <li><%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+            <% elsif current_user.admin? %>
+              <li><%= link_to "Users", users_path, class: "nav-link" %></li>
+            <% end %>
+          <li>
+            <% if current_user %>
+              <%= link_to "Log Out", destroy_user_session_path, class: "nav-link" %>
+            <% end %>
           </li>
         </ul>
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <%= form_tag(locations_path, :method => "get", id: "search-form") do %>
+          <%= form_tag(locations_path, :method => "get", id: "search-form", style: "background-color:white") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Cities" %>
-            <%= submit_tag "Search", :name => nil %>
+            <%= submit_tag "Search", :name => nil, style: "background-color:white" %>
           <% end %>
         </ul>
       </div>
     </div>
 
 
+  <div class="row column">
     <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+      <% if msg.is_a?(String) %>
+        <div data-alert class="alert-box round <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+          <%= content_tag(:div, msg, class: "alert alert-#{name}", style: "color:white") %>
+        </div>
+      <% end %>
     <% end %>
+  </div>
 
+<div class="row column">
   <%= yield %>
+</div>
 
   </body>
 </html>

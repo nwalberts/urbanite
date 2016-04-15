@@ -14,6 +14,9 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @reviews = @location.reviews.order(created_at: :desc).page params[:page]
+    if user_signed_in?
+      @profile = current_user.profile
+    end
   end
 
   def new

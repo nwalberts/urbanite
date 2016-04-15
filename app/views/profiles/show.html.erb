@@ -1,8 +1,8 @@
-<h1> <%= @profile.user.first_name %> <%= @profile.user.last_name %>'s Profile </h1>
-<h3>
+<h2> <%= @profile.user.first_name %> <%= @profile.user.last_name %>'s Profile </h2>
+<h4>
 Email: <%= @profile.user.email %><br />
 Home location: <%= @profile.user.home_location %><br />
-</h3>
+</h4>
 
 <div class="edit_account">
   <%= link_to "Edit Account Info", edit_user_registration_path %>
