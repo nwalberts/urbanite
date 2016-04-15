@@ -102,20 +102,20 @@ p {
   background-color: lighten($black, 10%);
   min-height: 200px;
 
-  .vote_total {
+  .vote-total {
     color: $white;
 
     .vote-number {
-      display:inline-block;
+      display: inline-block;
     }
   }
 
   .upvote-button {
-    display:inline-block;
+    display: inline-block;
   }
 
   .downvote-button {
-    display:inline-block;
+    display: inline-block;
   }
 }
 
