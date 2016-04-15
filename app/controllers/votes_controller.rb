@@ -5,19 +5,11 @@ class VotesController < ApplicationController
   def upvote
     @review = Review.find(params[:review_id])
     @user = current_user
-<<<<<<< HEAD
-=======
-    if @vote.value == 1
-      @vote.value = 0
-    end
->>>>>>> 7a8cb38f142a12701b5ab09c9c2d39c89472e318
 
     if @vote.value == 1
       @vote.value = 0
-    else
-      @vote.value = 1
     end
-    
+
     respond_to do |format|
       if @vote.save
         format.json { render json: @review, status: 200 }
@@ -30,17 +22,9 @@ class VotesController < ApplicationController
   def downvote
     @review = Review.find(params[:review_id])
     @user = current_user
-<<<<<<< HEAD
-
 
     if @vote.value == -1
       @vote.value = 0
-    else
-      @vote.value = -1
-=======
-    if @vote.value == -1
-      @vote.value = 0
->>>>>>> 7a8cb38f142a12701b5ab09c9c2d39c89472e318
     end
 
 
