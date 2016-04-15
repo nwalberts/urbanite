@@ -21,8 +21,10 @@ feature "creator edits review and user cannot edit" do
     expect(page).to have_link("Edit Review")
     click_on "Edit Review"
     choose('review_rating_3')
+    click_on "Submit"
 
     expect(page).to have_content("3")
+    expect(page).to have_content("Successfully updated review")
   end
 
   scenario "user (not creator) tries to edit review" do
