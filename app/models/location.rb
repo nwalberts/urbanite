@@ -19,6 +19,6 @@ class Location < ActiveRecord::Base
   paginates_per 10
 
   def self.search(query)
-    where("name like ?", "%#{query}%")
+    where("name ilike ?", "%#{query}%")
   end
 end
