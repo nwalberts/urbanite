@@ -8,11 +8,11 @@ Urbanite is a city review app built with Ruby on Rails. Urbanite was designed to
 [Urbanite Website](https://urbanite-group-project.herokuapp.com/)
 
 ## Contributors
-* Nick Alberts
-* Britta Carroll
-* Kamille Delgardo
-* Mia Gaulin
-* Greg Ward
+* [Nick Alberts](https://github.com/nwalberts)
+* [Britta Carroll](https://github.com/brittacarroll)
+* [Kamille Delgardo](https://github.com/Kamilleski)
+* [Mia Gaulin](https://github.com/mia-gaulin)
+* [Greg Ward](https://github.com/ICU81MI)
 
 ## Features
 * Users may add a city and view details and reviews (if they exist) of that city.
