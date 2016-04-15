@@ -36,3 +36,5 @@ Urbanite is a city review app built with Ruby on Rails. Urbanite was designed to
 * Deployment on Heroku
 * Email development with MailCatcher. Use ``` gem install mailcatcher && mailcatcher ``` to run.
 * Email production with SendGrid & Heroku
+* Map imagery with Google Maps API
+
