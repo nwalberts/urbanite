@@ -8,7 +8,8 @@
           Votes: <div id="review-<%= review.id %>" class="vote-number"><%= review.votes.tally %></div>
         </div>
         <div class="edit">
-          <% if current_user == review.user %>
+          <% if current_user.nil? %>
+          <% elsif current_user == review.user %>
             <%= link_to 'Edit Review', edit_review_path(review) %> <%= button_to 'Delete Review', review_path(review), method: :delete, data: { confirm: 'Are you sure?'} %>
           <% elsif current_user.admin? %>
             <%= button_to 'Delete Review', review_path(review, review.location), method: :delete, data: { confirm: 'Are you sure?'} %>
